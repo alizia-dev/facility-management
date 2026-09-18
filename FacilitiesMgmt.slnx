@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/FacilitiesMgmt.Application/FacilitiesMgmt.Application.csproj" />
+    <Project Path="src/FacilitiesMgmt.Domain/FacilitiesMgmt.Domain.csproj" />
+    <Project Path="src/FacilitiesMgmt.Infrastructure/FacilitiesMgmt.Infrastructure.csproj" />
+    <Project Path="src/FacilitiesMgmt.WebApi/FacilitiesMgmt.WebApi.csproj" />
+  </Folder>
+</Solution>
