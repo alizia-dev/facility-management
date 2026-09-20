@@ -1,0 +1,21 @@
+@if (auth.isLoggedIn()) {
+  <nav class="navbar">
+    <div class="navbar-links">
+      <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      <a routerLink="/requests" routerLinkActive="active">Requests</a>
+      <a routerLink="/requests/new" routerLinkActive="active">New request</a>
+      <a routerLink="/reports" routerLinkActive="active">Spend report</a>
+    </div>
+
+    <div class="navbar-user">
+      <!--
+        The organisation name is shown on every screen on purpose: with two tenants
+        that have identically named sites, it is the only thing that makes a
+        cross-tenant bug visible to the naked eye.
+      -->
+      <span class="org">{{ auth.organizationName() }}</span>
+      <span class="who">{{ auth.fullName() }} ({{ auth.role() }})</span>
+      <button type="button" (click)="logout()">Sign out</button>
+    </div>
+  </nav>
+}

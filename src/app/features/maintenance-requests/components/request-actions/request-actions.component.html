@@ -1,0 +1,40 @@
+@if (canDecide || canComplete) {
+  <div class="actions">
+    @if (canDecide) {
+      <button type="button" (click)="approve()" [disabled]="busy()">Approve</button>
+      <input
+        type="text"
+        placeholder="Reason (optional)"
+        [(ngModel)]="rejectReason"
+        [disabled]="busy()" />
+      <button type="button" (click)="reject()" [disabled]="busy()">Reject</button>
+
+      @if (isOwnRequest) {
+        <!--
+          Left enabled on purpose. The server refuses a self-approval with 403; the
+          message it returns is shown below. Hiding the button would be a nicer UI
+          and a worse demonstration.
+        -->
+        <span class="hint">You raised this one — the server will refuse.</span>
+      }
+    }
+
+    @if (canComplete) {
+      @if (showComplete()) {
+        <input
+          type="number"
+          step="0.01"
+          min="0"
+          placeholder="Actual cost"
+          [(ngModel)]="actualCost"
+          [disabled]="busy()" />
+        <button type="button" (click)="complete()" [disabled]="busy()">Save</button>
+        <button type="button" (click)="showComplete.set(false)" [disabled]="busy()">Cancel</button>
+      } @else {
+        <button type="button" (click)="showComplete.set(true)">Mark complete…</button>
+      }
+    }
+
+    <app-form-errors [message]="error()" />
+  </div>
+}

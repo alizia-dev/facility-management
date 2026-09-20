@@ -1,0 +1,33 @@
+<div class="audit">
+  <h4>Audit trail</h4>
+
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  } @else if (entries().length === 0) {
+    <p class="muted">No entries.</p>
+  } @else {
+    <table class="compact">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>When (UTC)</th>
+          <th>Action</th>
+          <th>By</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (entry of entries(); track entry.id) {
+          <tr>
+            <!-- The identity value is shown because a gap in it is itself evidence. -->
+            <td>{{ entry.id }}</td>
+            <td>{{ entry.occurredAt | date: 'yyyy-MM-dd HH:mm:ss' : 'UTC' }}</td>
+            <td>{{ entry.action }}</td>
+            <td>{{ entry.performedByName }}</td>
+            <td class="json">{{ entry.details }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</div>
