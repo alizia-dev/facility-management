@@ -6,7 +6,7 @@ Angular frontend for the facilities management application. It provides login, d
 
 This project is the SPA client for the backend API. It includes:
 
-- user login with organisation slug, email, and password
+- user login with organisation, email, and password
 - dashboard overview of requests
 - maintenance request creation and listing
 - approval / rejection / completion actions
@@ -56,7 +56,6 @@ http://localhost:4200
 
 Sign-in requires:
 
-- organisation slug
 - email
 - password
 
